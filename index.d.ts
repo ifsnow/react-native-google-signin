@@ -6,32 +6,6 @@
 //                 Eric Chen <https://github.com/echentw>
 
 import * as React from 'react';
-import { StyleProp, ViewProps, ViewStyle } from 'react-native';
-
-export interface GoogleSigninButtonProps extends ViewProps {
-  style?: StyleProp<ViewStyle>;
-  size?: GoogleSigninButton.Size;
-  color?: GoogleSigninButton.Color;
-  disabled?: boolean;
-  onPress?(): void;
-}
-
-export class GoogleSigninButton extends React.Component<GoogleSigninButtonProps> {
-  constructor(props: GoogleSigninButtonProps);
-}
-
-export namespace GoogleSigninButton {
-  enum Size {
-    Standard,
-    Wide,
-    Icon,
-  }
-
-  enum Color {
-    Light,
-    Dark,
-  }
-}
 
 export interface HasPlayServicesParams {
   /**
