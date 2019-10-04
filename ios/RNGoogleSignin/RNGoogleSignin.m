@@ -23,11 +23,6 @@ static NSString *const kClientIdKey = @"CLIENT_ID";
 - (NSDictionary *)constantsToExport
 {
   return @{
-           @"BUTTON_SIZE_ICON": @(kGIDSignInButtonStyleIconOnly),
-           @"BUTTON_SIZE_STANDARD": @(kGIDSignInButtonStyleStandard),
-           @"BUTTON_SIZE_WIDE": @(kGIDSignInButtonStyleWide),
-           @"BUTTON_COLOR_LIGHT": @(kGIDSignInButtonColorSchemeLight),
-           @"BUTTON_COLOR_DARK": @(kGIDSignInButtonColorSchemeDark),
            @"SIGN_IN_CANCELLED": [@(kGIDSignInErrorCodeCanceled) stringValue],
            @"SIGN_IN_REQUIRED": [@(kGIDSignInErrorCodeHasNoAuthInKeychain) stringValue],
            @"IN_PROGRESS": ASYNC_OP_IN_PROGRESS,
