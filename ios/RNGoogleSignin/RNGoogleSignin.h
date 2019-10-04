@@ -15,25 +15,4 @@
 
 @end
 
-@implementation RCTConvert(GIDSignInButtonStyle)
-
-RCT_ENUM_CONVERTER(GIDSignInButtonStyle, (@{
-                                            @"standard": @(kGIDSignInButtonStyleStandard),
-                                            @"wide": @(kGIDSignInButtonStyleWide),
-                                            @"icon": @(kGIDSignInButtonStyleIconOnly),
-                                            }), kGIDSignInButtonStyleStandard, integerValue)
-
-
-@end
-
-@implementation RCTConvert(GIDSignInButtonColorScheme)
-
-RCT_ENUM_CONVERTER(GIDSignInButtonColorScheme, (@{
-                                                  @"dark": @(kGIDSignInButtonColorSchemeDark),
-                                                  @"light": @(kGIDSignInButtonColorSchemeLight),
-                                                  }), kGIDSignInButtonColorSchemeDark, integerValue)
-
-@end
-
-
 #endif

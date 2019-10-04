@@ -23,11 +23,6 @@ static NSString *const kClientIdKey = @"CLIENT_ID";
 - (NSDictionary *)constantsToExport
 {
   return @{
-           @"BUTTON_SIZE_ICON": @(kGIDSignInButtonStyleIconOnly),
-           @"BUTTON_SIZE_STANDARD": @(kGIDSignInButtonStyleStandard),
-           @"BUTTON_SIZE_WIDE": @(kGIDSignInButtonStyleWide),
-           @"BUTTON_COLOR_LIGHT": @(kGIDSignInButtonColorSchemeLight),
-           @"BUTTON_COLOR_DARK": @(kGIDSignInButtonColorSchemeDark),
            @"SIGN_IN_CANCELLED": [@(kGIDSignInErrorCodeCanceled) stringValue],
            @"SIGN_IN_REQUIRED": [@(kGIDSignInErrorCodeHasNoAuthInKeychain) stringValue],
            @"IN_PROGRESS": ASYNC_OP_IN_PROGRESS,
@@ -70,7 +65,7 @@ RCT_EXPORT_METHOD(configure:(NSDictionary *)options
   [GIDSignIn sharedInstance].scopes = options[@"scopes"];
   [GIDSignIn sharedInstance].shouldFetchBasicProfile = YES; // email, profile
   [GIDSignIn sharedInstance].loginHint = options[@"loginHint"];
-    
+
   if (options[@"iosClientId"]) {
     [GIDSignIn sharedInstance].clientID = options[@"iosClientId"];
   } else {
@@ -149,7 +144,7 @@ RCT_EXPORT_METHOD(getTokens:(RCTPromiseResolveBlock)resolve
     reject(@"getTokens", @"getTokens requires a user to be signed in", nil);
     return;
   }
-  
+
   GIDAuthenticationHandler handler = ^void(GIDAuthentication *authentication, NSError *error) {
     if (error) {
       reject(@"getTokens", error.localizedDescription, nil);
@@ -160,7 +155,7 @@ RCT_EXPORT_METHOD(getTokens:(RCTPromiseResolveBlock)resolve
                 });
     }
   };
-  
+
   [currentUser.authentication getTokensWithHandler:handler];
 }
 
@@ -173,7 +168,7 @@ RCT_EXPORT_METHOD(getTokens:(RCTPromiseResolveBlock)resolve
     return nil;
   }
   NSURL *imageURL = user.profile.hasImage ? [user.profile imageURLWithDimension:120] : nil;
-  
+
   NSDictionary *userInfo = @{
                              @"id": user.userID,
                              @"name": RCTNullIfNil(user.profile.name),
@@ -182,7 +177,7 @@ RCT_EXPORT_METHOD(getTokens:(RCTPromiseResolveBlock)resolve
                              @"photo": imageURL ? imageURL.absoluteString : [NSNull null],
                              @"email": user.profile.email,
                              };
-  
+
   NSDictionary *params = @{
                            @"user": userInfo,
                            @"idToken": user.authentication.idToken,
